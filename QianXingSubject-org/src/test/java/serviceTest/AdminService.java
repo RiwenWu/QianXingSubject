@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
 
+import junit.framework.Assert;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -23,6 +25,8 @@ public class AdminService {
 	@Test
 	public void loginTest() {
 		Administrator admin = administratorService.login("wrw", "123456");
+		System.out.println(admin.getAdminPassword());
+		Assert.assertEquals("123456", admin.getAdminPassword());
 	}
 
 }

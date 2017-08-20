@@ -12,4 +12,12 @@
   <artifactId>QianXingSubject-org</artifactId>
   <groupId>com.wrw.qianxingsubject.org</groupId>
   <version>${QianXingSubject.version}</version>
+  
+  <dependencies>
+      <dependency>
+			<groupId>com.wrw.qianxingsubject.common</groupId>
+			<artifactId>QianXingSubject-common</artifactId>
+			<version>${QianXingSubject.version}</version>
+	  </dependency>
+  </dependencies>
 </project>

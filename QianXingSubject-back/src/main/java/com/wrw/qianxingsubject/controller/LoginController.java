@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
@@ -28,10 +30,10 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/do_login")
-	public String doLogin(HttpServletRequest request, Model model){
+	public String doLogin(HttpServletRequest request){
 		
 		String adminName = request.getParameter("adminName");
-		String adminpwd = request.getParameter("adminpwd");
+		String adminpwd = request.getParameter("adminPwd");
 		
 		try {
 			Administrator admin = administratorService.login(adminName, adminpwd);
@@ -44,4 +46,12 @@ public class LoginController {
 		}
 		return "login";
 	}
+	
+	/**Freemarker模板的Controller*/  
+    @RequestMapping(value="/test",method={RequestMethod.GET})  
+    public ModelAndView getFirstPage() {  
+        //welcom就是视图的名称（test.ftl）  
+        ModelAndView mv = new ModelAndView("test");  
+        return mv;  
+    } 
 }

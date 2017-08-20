@@ -308,5 +308,6 @@
     <modules>
     	<module>QianXingSubject-org</module>
     	<module>QianXingSubject-back</module>
+    	<module>QianXingSubject-common</module>
     </modules>
 </project>

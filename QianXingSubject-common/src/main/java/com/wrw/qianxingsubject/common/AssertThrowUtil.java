@@ -1,6 +1,6 @@
-package com.wrw.qianxingsubject.org.common;
+package com.wrw.qianxingsubject.common;
 
-public class ThisSystemUtil {
+public class AssertThrowUtil {
 
 	public static String throwIfBlank(String message, String target) {
 		

@@ -3,7 +3,7 @@ package com.wrw.qianxingsubject.org.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wrw.qianxingsubject.org.common.ThisSystemException;
+import com.wrw.qianxingsubject.common.ThisSystemException;
 import com.wrw.qianxingsubject.org.dao.AdministratorMapper;
 import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
@@ -17,7 +17,7 @@ public class AdministratorServiceImpl implements AdministratorService{
 	@Override
 	public Administrator login(String adminName, String adminPassword) {
 		
-		Administrator admin = administratorDao.selectByAdminName(adminName);
+		Administrator admin = administratorDao.select("admin_name", adminName);
 		if(admin == null) {
 			throw new ThisSystemException("账号不存在");
 		}

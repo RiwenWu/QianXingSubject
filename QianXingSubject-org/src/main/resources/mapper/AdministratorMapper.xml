@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="com.wrw.qianxingsubject.org.dao.AdministratorMapper">
+	
 		<resultMap type="com.wrw.qianxingsubject.org.entity.Administrator" id="BaseResultMap">
 			<id column="id" property="id" javaType="long" jdbcType="BIGINT"/>
 			<result column="admin_name" property="adminName" jdbcType="VARCHAR"/>
@@ -16,36 +17,11 @@
 		<sql id="Base_Column_List">
 			id, admin_name, admin_password, admin_nicename, admin_email, admin_registered, admin_status, admin_right
 		</sql>
-		
-		<insert id="insert" parameterType="com.wrw.qianxingsubject.org.entity.Administrator" >
-		    insert into administrator (id, admin_name, admin_password, 
-		      admin_nicename, admin_email, admin_status, 
-		      admin_right, admin_registered)
-		    values (#{id,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}, 
-		      #{adminNicename,jdbcType=VARCHAR}, #{adminEmail,jdbcType=VARCHAR}, #{adminStatus,jdbcType=INTEGER}, 
-		      #{adminRight,jdbcType=INTEGER}, NOW())
-	  	</insert>
-	  	
-	  	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-		    delete from administrator
-		    where id = #{id,jdbcType=INTEGER}
-  		</delete>
-  		
-  		<update id="updateByPrimaryKey" parameterType="com.wrw.qianxingsubject.org.entity.Administrator">
-			update administrator
-		    set admin_name = #{adminName,jdbcType=VARCHAR},
-		      admin_password = #{adminPassword,jdbcType=VARCHAR},
-		      admin_nicename = #{adminNicename,jdbcType=VARCHAR},
-		      admin_email = #{adminEmail,jdbcType=VARCHAR},
-		      admin_status = #{adminStatus,jdbcType=INTEGER},
-		      admin_right = #{adminRight,jdbcType=INTEGER}
-		    where id = #{id,jdbcType=BIGINT}
-  		</update>
-  		
-  		<select id="selectByAdminName" parameterType="com.wrw.qianxingsubject.org.entity.Administrator" resultMap="BaseResultMap">
+
+  		<select id="select" parameterType="com.wrw.qianxingsubject.org.entity.Administrator" resultMap="BaseResultMap">
   			select
 		    <include refid="Base_Column_List" />
 		    from administrator
-		    where admin_name = #{adminName}
+		    where ${key} = #{ value }
   		</select>
 	</mapper>

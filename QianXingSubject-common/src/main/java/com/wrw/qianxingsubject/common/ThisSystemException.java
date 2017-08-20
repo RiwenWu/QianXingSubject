@@ -1,4 +1,4 @@
-package com.wrw.qianxingsubject.org.common;
+package com.wrw.qianxingsubject.common;
 
 public class ThisSystemException extends RuntimeException {
 

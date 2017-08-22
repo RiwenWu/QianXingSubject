@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.wrw.qianxingsubject.org.dto.AdministratorDTO;
 import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
 
@@ -24,7 +25,10 @@ public class AdminService {
 	
 	@Test
 	public void loginTest() {
-		Administrator admin = administratorService.login("wrw", "123456");
+		AdministratorDTO adminDTO = new AdministratorDTO();
+		adminDTO.setAdminName("wrw");
+		adminDTO.setAdminPassword("123456");
+		Administrator admin = administratorService.login(adminDTO);
 		System.out.println(admin.getAdminPassword());
 		Assert.assertEquals("123456", admin.getAdminPassword());
 	}

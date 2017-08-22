@@ -16,6 +16,11 @@
 			<artifactId>QianXingSubject-org</artifactId>
 			<version>${QianXingSubject.version}</version>
 	  </dependency>
+	  <dependency>
+			<groupId>com.wrw.qianxingsubject.common</groupId>
+			<artifactId>QianXingSubject-common</artifactId>
+			<version>${QianXingSubject.version}</version>
+	  </dependency>
   </dependencies>
   
 </project>

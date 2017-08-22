@@ -8,10 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wrw.qianxingsubject.common.JsonResult;
+import com.wrw.qianxingsubject.common.ThisSystemException;
+import com.wrw.qianxingsubject.org.dto.AdministratorDTO;
 import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
+
 
 /**
  * @author wrw
@@ -19,6 +24,7 @@ import com.wrw.qianxingsubject.org.service.AdministratorService;
  */
 
 @Controller
+@RequestMapping(value = "/admin")
 public class LoginController {
 	
 	@Autowired
@@ -29,29 +35,28 @@ public class LoginController {
 		return "login";
 	}
 	
-	@RequestMapping("/do_login")
-	public String doLogin(HttpServletRequest request){
+	/*
+	 * 登陆验证
+	 */
+	@ResponseBody
+	@RequestMapping(value="/do_login", method=RequestMethod.POST)
+	public JsonResult doLogin(HttpServletRequest request, AdministratorDTO adminDTO){
 		
-		String adminName = request.getParameter("adminName");
-		String adminpwd = request.getParameter("adminPwd");
+		JsonResult jsonResult = new JsonResult();
 		
 		try {
-			Administrator admin = administratorService.login(adminName, adminpwd);
+			Administrator admin = administratorService.login(adminDTO);
 			HttpSession session = request.getSession();
 			session.setAttribute("admin", admin);
-			return "index";
+			jsonResult.setSuccess(true);
+            return jsonResult;
 		} catch (Exception e) {
-//			e.printStackTrace();
-			request.setAttribute("message", e.getMessage());
+			e.printStackTrace();
+			jsonResult.setSuccess(false);
+	        jsonResult.setMsg("账号或密码错误!~~~");
+	        return jsonResult;
 		}
-		return "login";
+		
 	}
-	
-	/**Freemarker模板的Controller*/  
-    @RequestMapping(value="/test",method={RequestMethod.GET})  
-    public ModelAndView getFirstPage() {  
-        //welcom就是视图的名称（test.ftl）  
-        ModelAndView mv = new ModelAndView("test");  
-        return mv;  
-    } 
+  
 }

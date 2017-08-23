@@ -19,7 +19,7 @@
       <#include "/path/main-header.ftl">
       
       <!-- Left side column. contains the logo and sidebar -->
-      <@main_sidebar.sidebar "main"></@main_sidebar.sidebar>
+      <@main_sidebar.sidebar "updatePassword"></@main_sidebar.sidebar>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -38,9 +38,7 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
-          <!--------------------------
-            | Your Page Content Here |
-            -------------------------->
+          <p>更改密码</p>
 
         </section>
         <!-- /.content -->

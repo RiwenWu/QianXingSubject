@@ -19,4 +19,9 @@ public class AdminIndexController {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping("/updatePassword.html")
+	public String updatePassword() {
+		return "/system/updatePassword";
+	}
 }

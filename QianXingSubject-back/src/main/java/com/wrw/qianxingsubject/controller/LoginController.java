@@ -68,6 +68,6 @@ public class LoginController {
         //session过期
         req.getSession().invalidate();
 
-        res.sendRedirect("/admin/login.html");
+        res.sendRedirect(req.getContextPath() + "/admin/login.html");
     }
 }

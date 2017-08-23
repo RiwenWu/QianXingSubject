@@ -76,4 +76,25 @@
         <property name="exposeSpringMacroHelpers" value="true"/>
     </bean>
      
+     <!--登录拦截器-->
+    <mvc:interceptors>
+        <!-- 后台登陆过滤器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/*" />	<!--拦截范围（路径）-->
+            <mvc:exclude-mapping path="/admin/login" />	<!--不被拦截范围（路径）-->
+            <mvc:exclude-mapping path="/admin/do_login" />	<!--不被拦截范围（路径）-->
+            <!-- <mvc:exclude-mapping path="/admin/code.jpg" /> -->	<!--不被拦截范围（路径）-->
+            <!-- <mvc:exclude-mapping path="/admin/login" /> -->	<!--不被拦截范围（路径）-->
+            <bean class="com.wrw.qianxingsubject.interceptor.LoginInterceptor" />	<!--自定义拦截控制器bean-->
+        </mvc:interceptor>
+        <!-- 网站通用集中查询 -->
+        <!-- <mvc:interceptor>
+            <mvc:mapping path="/*" />	 拦截范围（路径）
+            <mvc:mapping path="/page/*" />	拦截范围（路径）
+            <mvc:mapping path="/category/**" />	拦截范围（路径）
+            <mvc:mapping path="/tag/**" />	拦截范围（路径）
+            <bean class="com.wrw.qianxingsubject.interceptor.LoginInterceptor" />
+        </mvc:interceptor> -->
+    </mvc:interceptors>
+    
 </beans>

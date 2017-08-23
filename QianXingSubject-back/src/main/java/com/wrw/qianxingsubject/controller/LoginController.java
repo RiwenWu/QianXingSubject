@@ -1,6 +1,9 @@
 package com.wrw.qianxingsubject.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +56,18 @@ public class LoginController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			jsonResult.setSuccess(false);
-	        jsonResult.setMsg("账号或密码错误!~~~");
+	        jsonResult.setMsg("后台信息:账号或密码错误!~~~");
 	        return jsonResult;
 		}
 		
 	}
   
+	@RequestMapping(value = "/logout")
+    public void logout(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
+        //session过期
+        req.getSession().invalidate();
+
+        res.sendRedirect("/admin/login.html");
+    }
 }

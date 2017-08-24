@@ -3,6 +3,7 @@ package com.wrw.qianxingsubject.org.dao;
 import org.apache.ibatis.annotations.Param;
 
 import com.wrw.qianxingsubject.common.dao.AbstractDao;
+import com.wrw.qianxingsubject.org.dto.AdministratorDTO;
 import com.wrw.qianxingsubject.org.entity.Administrator;
 
 /**
@@ -11,4 +12,5 @@ import com.wrw.qianxingsubject.org.entity.Administrator;
  */
 public interface AdministratorMapper extends AbstractDao<Administrator>{
 
+	void updatePassword(AdministratorDTO adminDTO);
 }

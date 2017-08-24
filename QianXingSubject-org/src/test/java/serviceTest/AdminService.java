@@ -33,4 +33,12 @@ public class AdminService {
 		Assert.assertEquals("123456", admin.getAdminPassword());
 	}
 
+	@Test
+	public void updatePasswordTest() {
+		AdministratorDTO adminDTO = new AdministratorDTO();
+		adminDTO.setId((long)1);
+		adminDTO.setAdminPassword("123456");
+		adminDTO.setNewPwd("654321");
+		administratorService.updatePassword(adminDTO);
+	}
 }

@@ -48,4 +48,11 @@
 		      </if>
 		    </set>
   		</update>
+  		
+  		<update id="updatePassword" parameterType="com.wrw.qianxingsubject.org.dto.AdministratorDTO">
+  			update administrator 
+  			set 
+  			admin_password = #{ newPwd, jdbcType=VARCHAR }
+		    where id = #{ id }
+  		</update>
 	</mapper>

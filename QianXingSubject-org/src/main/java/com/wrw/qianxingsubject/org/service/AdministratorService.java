@@ -13,5 +13,5 @@ public interface AdministratorService {
 	/*
 	 * 修改密码
 	 */
-	Administrator updatePassword(AdministratorDTO adminDTO);
+	void updatePassword(AdministratorDTO adminDTO);
 }

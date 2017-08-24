@@ -35,7 +35,7 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String login() {
-		return "login";
+		return "/login";
 	}
 	
 	/*
@@ -63,11 +63,37 @@ public class LoginController {
 	}
   
 	@RequestMapping(value = "/logout")
-    public void logout(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public String logout(HttpServletRequest req) {
 
         //session过期
         req.getSession().invalidate();
 
-        res.sendRedirect(req.getContextPath() + "/admin/login.html");
+        return "redirect:/admin/login";
+    }
+	
+	@ResponseBody
+	@RequestMapping(value = "/updatePwd", method=RequestMethod.POST)
+    public JsonResult updatePwd(HttpServletRequest req, AdministratorDTO adminDTO) {
+
+		JsonResult jsonResult = new JsonResult();
+		HttpSession session = req.getSession();
+		Administrator admin = (Administrator) session.getAttribute("admin");
+		adminDTO.setId(admin.getId());
+		
+		try {
+			administratorService.updatePassword(adminDTO);
+			jsonResult.setSuccess(true);
+			jsonResult.setMsg("修改成功，请重新登陆");
+			//session过期
+	        req.getSession().invalidate();
+            return jsonResult;
+		} catch (Exception e) {
+			e.printStackTrace();
+			jsonResult.setSuccess(false);
+	        jsonResult.setMsg("后台信息:迷之失败了！~~");
+	        return jsonResult;
+		}
+
+       
     }
 }

@@ -258,6 +258,13 @@
         </dependency>
 
         <!-- 文件上传 -->
+        <!-- commons-lang start -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.4</version>
+	    </dependency>
+	    <!-- commons-lang end -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -289,7 +296,7 @@
     </dependencies>
 
     <build>
-        <finalName>TeaCMS</finalName>
+        <finalName>qianxingsubject-back</finalName>
         <plugins>
             <plugin>
                 <!-- 编译器插件，可以指定JDK版本，项目编码等 -->

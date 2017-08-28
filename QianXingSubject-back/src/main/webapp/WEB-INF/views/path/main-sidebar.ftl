@@ -40,15 +40,26 @@
             
             <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
             
-            <li class="treeview">
-              <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+            <li <#if urlName == 'adminManage'>class="treeview menu-open"
+            	<#else>class="treeview"
+            	</#if> 
+            	>
+              <a href="#"><i class="fa fa-cog"></i> <span>权限管理</span>
                 <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-angle-down pull-right"></i>
                   </span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="#">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
+              <ul class="treeview-menu" 
+              	<#if urlName == 'adminManage'>style="display: block;"</#if> 
+              	>
+                <li <#if urlName == 'adminManage'>class="active"</#if> >
+                	<a href="adminManage.html">
+	                	<i class="fa fa-link"></i> 
+	                	<span>管理员列表</span>
+                	</a>
+                </li>
+                <li><a href="#"><i class="fa fa-link"></i> <span>权限列表</span></a></li>
+                <li><a href="#"><i class="fa fa-link"></i> <span>权限列表</span></a></li>
               </ul>
             </li>
             

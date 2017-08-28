@@ -26,7 +26,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Page Header
+            	后台主页
             <small>Optional description</small>
           </h1>
           <ol class="breadcrumb">
@@ -38,9 +38,7 @@
         <!-- Main content -->
         <section class="content container-fluid">
 
-          <!--------------------------
-            | Your Page Content Here |
-            -------------------------->
+          <h1>这是后台主页</h1>
 
         </section>
         <!-- /.content -->

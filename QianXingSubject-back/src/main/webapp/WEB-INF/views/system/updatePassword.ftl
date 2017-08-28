@@ -21,35 +21,37 @@
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-            Page Header
-            <small>Optional description</small>
-          </h1>
+            				修改密码
+			            	<small>Optional description</small>
+			          	</h1>
                         <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
                             <li class="active">Here</li>
                         </ol>
                     </section>
                     <!-- Main content -->
-                    <section class="content container-fluid">
-                        <form id="updatePwd-form" method="post">
-                            <div class="form-group has-feedback">
-                                <label for="adminPassword">原密码：</label>
-                                <input type="password" class="form-control" name="adminPassword" placeholder="请输入原密码" autocomplete="off">
-                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="newPwd">新密码：</label>
-                                <input type="password" class="form-control" name="newPwd" placeholder="请输入新密码" autocomplete="off">
-                                <span class="glyphicon glyphicon-cog form-control-feedback"></span>
-                            </div>
-                            <div class="form-group has-feedback">
-                                <label for="renewPwd">再次确认：</label>
-                                <input type="password" name="renewPwd" class="form-control" placeholder="请再次确认新密码" autocomplete="off">
-                                <span class="glyphicon glyphicon-cog form-control-feedback"></span>
-                            </div>
-                            <button type="submit" class="btn btn-success btn-block btn-flat">确定</button>
-                        </form>
-                    </section>
+                    <div class="col-md-9">
+	                    <section class="content container-fluid">
+	                        <form id="updatePwd-form" method="post">
+	                            <div class="form-group has-feedback">
+	                                <label for="adminPassword">原密码：</label>
+	                                <input type="password" class="form-control" name="adminPassword" placeholder="请输入原密码" autocomplete="off">
+	                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+	                            </div>
+	                            <div class="form-group has-feedback">
+	                                <label for="newPwd">新密码：</label>
+	                                <input type="password" class="form-control" name="newPwd" placeholder="请输入新密码" autocomplete="off">
+	                                <span class="glyphicon glyphicon-cog form-control-feedback"></span>
+	                            </div>
+	                            <div class="form-group has-feedback">
+	                                <label for="renewPwd">再次确认：</label>
+	                                <input type="password" name="renewPwd" class="form-control" placeholder="请再次确认新密码" autocomplete="off">
+	                                <span class="glyphicon glyphicon-cog form-control-feedback"></span>
+	                            </div>
+	                            <button type="submit" class="btn btn-success btn-block btn-flat">确定</button>
+	                        </form>
+	                    </section>
+	                </div>
                     <!-- /.content -->
                 </div>
                 <!-- /.content-wrapper -->

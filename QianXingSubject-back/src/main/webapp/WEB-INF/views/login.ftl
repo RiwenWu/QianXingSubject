@@ -82,7 +82,7 @@
 
             <p class="login-box-msg"> </p>
             
-		    <form id="login-form" action="/do_login" method="post">
+		    <form id="login-form" method="post">
 		        <div class="form-group has-feedback">
 		            <input type="text" class="form-control" name="adminName" placeholder="请输入账号" autocomplete="off">
 		            <span class="glyphicon glyphicon-user form-control-feedback"></span>

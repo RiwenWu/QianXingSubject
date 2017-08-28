@@ -18,6 +18,7 @@
 			id, admin_name, admin_password, admin_nicename, admin_email, admin_registered, admin_status, admin_right
 		</sql>
 
+		<!-- 通过名字查询 -->
   		<select id="select" parameterType="com.wrw.qianxingsubject.org.entity.Administrator" resultMap="BaseResultMap">
   			select
 		    <include refid="Base_Column_List" />
@@ -49,10 +50,69 @@
 		    </set>
   		</update>
   		
+  		<!-- 更改密码 -->
   		<update id="updatePassword" parameterType="com.wrw.qianxingsubject.org.dto.AdministratorDTO">
   			update administrator 
   			set 
   			admin_password = #{ newPwd, jdbcType=VARCHAR }
 		    where id = #{ id }
   		</update>
+  		
+  		<select id="findAllAdminInfo" resultMap="BaseResultMap">
+  			SELECT
+	          <include refid="Base_Column_List" />
+	      	FROM
+	          administrator
+  		</select>
+  		
+  		<insert id="insert" parameterType="com.wrw.qianxingsubject.org.dto.AdministratorDTO">
+  			insert into administrator
+		    <trim prefix="(" suffix=")" suffixOverrides="," >
+		      <if test="adminName != null" >
+		        admin_name,
+		      </if>
+		      <if test="adminNicename != null" >
+		        admin_nicename,
+		      </if>
+		      <if test="adminPassword != null" >
+		        admin_password,
+		      </if>
+		      <if test="adminEmail != null" >
+		        admin_email,
+		      </if>
+		      <if test="adminStatus != null" >
+		        admin_status,
+		      </if>
+		      <if test="adminRight != null" >
+		        admin_right,
+		      </if>
+		      <if test="adminRegistered != null" >
+		        admin_registered,
+		      </if>
+		    </trim>
+		    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		      <if test="adminName != null" >
+		        #{adminName,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminPassword != null" >
+		        #{adminPassword,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminNicename != null" >
+		        #{adminNicename,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminEmail != null" >
+		        #{adminEmail,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminStatus != null" >
+		        #{adminStatus,jdbcType=INTEGER},
+		      </if>
+		      <if test="adminRight != null" >
+		        #{adminRight,jdbcType=INTEGER},
+		      </if>
+		      <if test="adminRegistered != null" >
+		        #{adminRegistered,jdbcType=TIMESTAMP},
+		      </if>
+		    </trim>
+  		</insert>
+  		
 	</mapper>

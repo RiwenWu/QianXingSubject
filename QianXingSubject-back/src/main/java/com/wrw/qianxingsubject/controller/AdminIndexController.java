@@ -24,4 +24,9 @@ public class AdminIndexController {
 	public String updatePassword() {
 		return "/system/updatePassword";
 	}
+	
+	@RequestMapping("/adminManage.html")
+	public String adminManage() {
+		return "/system/adminManage";
+	}
 }

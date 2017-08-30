@@ -36,7 +36,11 @@
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             
-            <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+            <li <#if urlName == 'druidManage'>class="active"</#if>>
+            	<a href="druidManage.html">
+            		<i class="fa fa-link"></i> <span>SQL监控</span>
+            	</a>
+            </li>
             
             <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
             

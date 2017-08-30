@@ -41,7 +41,7 @@ public class AdminManageController {
 	public String dialogEdit(@PathVariable long id, Model model) {
 		if (id != 0) {
 			Administrator admin = administratorService.findById(id);
-			model.addAttribute("admin", admin);
+			model.addAttribute("chose_admin", admin);
 		}
 		return "/system/dialog/admin_createOredit";
 	}

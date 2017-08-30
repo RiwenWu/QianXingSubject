@@ -29,4 +29,9 @@ public class AdminIndexController {
 	public String adminManage() {
 		return "/system/adminManage";
 	}
+	
+	@RequestMapping("/druidManage.html")
+	public String druidManage() {
+		return "/system/druidManage";
+	}
 }

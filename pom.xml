@@ -172,18 +172,12 @@
         </dependency>
         <!-- MYSQL 数据库相关依赖 end -->
         
-        <!-- tomcat jdbc start -->
-	    <dependency>
-		    <groupId>org.apache.tomcat</groupId>
-		    <artifactId>tomcat-jdbc</artifactId>
-		    <version>8.0.33</version>
-	    </dependency>
-	    <dependency>
-		    <groupId>org.apache.tomcat</groupId>
-		    <artifactId>tomcat-juli</artifactId>
-		    <version>8.0.33</version>
-	    </dependency>
-	    <!-- tomcat jdbc end -->
+        <!-- Druid是Java语言中最好的数据库连接池。Druid能够提供强大的监控和扩展功能。 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId><!-- connection pool:数据库连接池,用来在spingMVC-mybatis.xml中配置数据库  -->
+            <version>${druid.version}</version>
+        </dependency>
 
         <!-- MYBATIS 持久层框架 begin -->
         <dependency>

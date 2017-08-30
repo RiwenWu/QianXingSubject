@@ -69,7 +69,7 @@
                                                 <td class="contentCenter" v-if="el.adminStatus==1">正常</td>
                                                 <td class="contentCenter" v-else="el.adminStatus==0">已删除</td>
                                                 <td>
-                                                    <input class="btn btn-success btn-xs" v-on:click="editUser(el)" value="编辑" type="button" />
+                                                    <input class="btn btn-success btn-xs" v-on:click="javascript:myEdit(el.id)" value="编辑" type="button" />
                                                     <input class="btn btn-danger btn-xs" v-on:click="deleteUser(el.id)" value="删除" type="button" />
                                                 </td>
                                             </tr>

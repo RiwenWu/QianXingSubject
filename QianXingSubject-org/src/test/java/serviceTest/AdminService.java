@@ -78,4 +78,13 @@ public class AdminService {
 		adminDTO.setAdminRegistered(new Date());
 		administratorService.createAdmin(adminDTO);
 	}
+	
+	@Test
+	public void editAdmin() {
+		AdministratorDTO adminDTO = new AdministratorDTO();
+		adminDTO.setId((long)5);
+		adminDTO.setAdminName("测试");
+		adminDTO.setAdminNicename("昵称");
+		administratorService.editAdmin(adminDTO);
+	}
 }

@@ -80,6 +80,9 @@ public class AdministratorServiceImpl implements AdministratorService{
 		return admin;
 	}
 
+	/*
+	 * 创建管理员
+	 */
 	@Override
 	public void createAdmin(AdministratorDTO adminDTO) {
 		//验证参数
@@ -89,6 +92,14 @@ public class AdministratorServiceImpl implements AdministratorService{
 		
 		adminDTO.setAdminRegistered(new Date());
 		administratorDao.insert(adminDTO);
+	}
+
+	/*
+	 * 修改管理员
+	 */
+	@Override
+	public void editAdmin(AdministratorDTO adminDTO) {
+		administratorDao.update(adminDTO);
 	}
 
 }

@@ -29,25 +29,26 @@
   		<update id="update">
   			update administrator
   			<set >
-		      <if test="userLogin != null" >
+		      <if test="adminName != null" >
 		        admin_name = #{adminName,jdbcType=VARCHAR},
 		      </if>
-		      <if test="userPass != null" >
+		      <if test="adminPassword != null" >
 		        admin_password = #{adminPassword,jdbcType=VARCHAR},
 		      </if>
-		      <if test="userNicename != null" >
+		      <if test="adminNicename != null" >
 		        admin_nicename = #{adminNicename,jdbcType=VARCHAR},
 		      </if>
-		      <if test="userEmail != null" >
+		      <if test="adminEmail != null" >
 		        admin_email = #{adminEmail,jdbcType=VARCHAR},
 		      </if>
-		      <if test="userStatus != null" >
+		      <if test="adminStatus != null" >
 		        admin_status = #{adminStatus,jdbcType=INTEGER},
 		      </if>
-		      <if test="userRight != null" >
+		      <if test="adminRight != null" >
 		        admin_right = #{adminRight,jdbcType=INTEGER},
 		      </if>
 		    </set>
+		    where id = #{ id }
   		</update>
   		
   		<!-- 更改密码 -->

@@ -33,4 +33,6 @@ public interface AdministratorService {
     Administrator findById(long id);
     
     void createAdmin(AdministratorDTO adminDTO);
+    
+    void editAdmin(AdministratorDTO adminDTO);
 }

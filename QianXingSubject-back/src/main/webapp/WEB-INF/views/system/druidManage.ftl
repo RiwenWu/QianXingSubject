@@ -31,7 +31,7 @@
                     </section>
                     <!-- Main content -->
 	                    <section class="content container-fluid">
-	                    	<iframe src="http://localhost:8080/qianxingsubject-back/druid/index.html" style="overflow:visible;" scrolling="yes" frameborder="no" height="720px" width="100%">
+	                    	<iframe src="/qianxingsubject-back/druid/index.html" style="overflow:visible;" scrolling="yes" frameborder="no" height="720px" width="100%">
 	                    	</iframe>
 	                    </section>
                     <!-- /.content -->

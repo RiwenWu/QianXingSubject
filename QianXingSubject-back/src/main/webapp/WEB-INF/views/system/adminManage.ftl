@@ -34,7 +34,10 @@
                         <div class="col-md">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <a href="javascript:myEdit(0);" class="box-btn btn-sm btn-info btn-flat pull-left">创建管理员</a>
+                                    <a href="javascript:open_container(0);" class="box-btn btn-sm btn-info btn-flat pull-left">创建管理员</a>
+                                    
+                                    <#include "dialog/admin_create.ftl">
+                                    
                                     <div class="box-tools">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -69,7 +72,7 @@
                                                 <td class="contentCenter" v-if="el.adminStatus==1">正常</td>
                                                 <td class="contentCenter" v-else="el.adminStatus==0">已删除</td>
                                                 <td>
-                                                    <input class="btn btn-success btn-xs" v-on:click="javascript:myEdit(el.id)" value="编辑" type="button" />
+                                                    <input class="btn btn-success btn-xs" v-on:click="javascript:open_container(el.id)" value="编辑" type="button" />
                                                     <input class="btn btn-danger btn-xs" v-on:click="deleteUser(el.id)" value="删除" type="button" />
                                                 </td>
                                             </tr>
@@ -104,70 +107,42 @@
                     <#include "/path/control-sidebar.ftl">
         </div>
         <!-- ./wrapper -->
-        <!-- REQUIRED JS SCRIPTS -->
-        <!-- jQuery 3.2.1 -->
-        <script src="static/plugins/jQuery/jquery-3.2.1.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
+        
+	    <!-- Bootstrap 3.3.7 -->
         <script src="static/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
         <script src="static/plugins/AdminLTE/dist/js/adminlte.min.js"></script>
         <!--vue-->
         <script src="static/plugins/vue/vue.min.js"></script>
-        <!--layer-->
-        <script src="static/plugins/layer/layer.js"></script>
         <script type="text/javascript">
-        $(function() {
-            getAllTag(0);
-        });
-
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                dataTag: {}
-            },
-            methods: {
-                getAllTag: function(id) {
-                    getAllTag(id);
-                }
-            }
-        });
-
-
-        <!--查询所有用户信息-->
-        function getAllTag(id) {
-            $.get("findAdminlist/" + id, function(result) {
-                // console.log(JSON.stringify(result));
-                vm.dataTag = result.obj;
-            });
-        }
-        
-        <!-- 新增/编辑 -->
-		function myEdit(id){
-			var loadIdx = parent.layer.load();
-			var title = '添加用户';
-			if(id != 0){
-				title = '修改用户';
-			}
-			$.get('dialog/edit/'+id, {}, function(str){
-				
-				parent.layer.close(loadIdx);
-				
-				layer.open({
-					title : title,
-					type : 1,
-					area : ['400px', '600px'],
-					content : str,
-					btn : ['确定', '取消'],
-					yes : function(index, layero){
-						$('#Admin-form').submit();
-					},
-					btn2 : function(index, layero){
-					    layer.close(index);
-					}
-				});
-			});
-		}
+	        $(function() {
+	            getAllTag(0);
+	        });
+	
+	        var vm = new Vue({
+	            el: '#app',
+	            data: {
+	                dataTag: {}
+	            },
+	            methods: {
+	                getAllTag: function(id) {
+	                    getAllTag(id);
+	                }
+	            }
+	        });
+	
+	
+	        <!--查询所有用户信息-->
+	        function getAllTag(id) {
+	            $.get("findAdminlist/" + id, function(result) {
+	                // console.log(JSON.stringify(result));
+	                vm.dataTag = result.obj;
+	            });
+	        }
+	        
         </script>
+        
+        
 </body>
 
 </html>

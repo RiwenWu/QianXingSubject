@@ -1,6 +1,7 @@
 package com.wrw.qianxingsubject.org.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author wrw
@@ -44,9 +45,9 @@ public class Administrator {
 	private Integer adminStatus;
 	
 	/*
-	 * 用户权限
+	 * 用户角色
 	 */
-	private Integer adminRight;
+	private List<Role> adminRoles;
 
 	public Long getId() {
 		return id;
@@ -104,12 +105,12 @@ public class Administrator {
 		this.adminStatus = adminStatus;
 	}
 
-	public Integer getAdminRight() {
-		return adminRight;
+	public List<Role> getAdminRoles() {
+		return adminRoles;
 	}
 
-	public void setAdminRight(Integer adminRight) {
-		this.adminRight = adminRight;
+	public void setAdminRoles(List<Role> adminRoles) {
+		this.adminRoles = adminRoles;
 	}
 
 	

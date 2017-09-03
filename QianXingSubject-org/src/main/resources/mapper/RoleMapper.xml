@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wrw.qianxingsubject.org.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.wrw.qianxingsubject.org.entity.Role" >
+    <id column="id" property="roleId" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_desc" property="roleDesc" jdbcType="VARCHAR" />
+    <result column="role_createtime" property="roleCreatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_name, role_desc, role_createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where id = #{roleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role
+    where id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrw.qianxingsubject.org.entity.Role" >
+    insert into role (id, role_name, role_desc, 
+      role_createtime)
+    values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleDesc,jdbcType=VARCHAR}, 
+      #{roleCreatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrw.qianxingsubject.org.entity.Role" >
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleDesc != null" >
+        role_desc,
+      </if>
+      <if test="roleCreatetime != null" >
+        role_createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDesc != null" >
+        #{roleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCreatetime != null" >
+        #{roleCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrw.qianxingsubject.org.entity.Role" >
+    update role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDesc != null" >
+        role_desc = #{roleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCreatetime != null" >
+        role_createtime = #{roleCreatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrw.qianxingsubject.org.entity.Role" >
+    update role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_desc = #{roleDesc,jdbcType=VARCHAR},
+      role_createtime = #{roleCreatetime,jdbcType=TIMESTAMP}
+    where id = #{roleId,jdbcType=INTEGER}
+  </update>
+  
+  <!--select begin -->
+  <select id="selectByMapParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from role a
+    where 1=1
+    <if test="firstResult !=null and pageRow !=null">
+			limit #{firstResult,jdbcType=INTEGER},#{pageRow,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="countByMapParams" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    select count(1)
+    from role a
+    where 1=1
+    <if test="firstResult !=null and pageRow !=null">
+			limit #{firstResult,jdbcType=INTEGER},#{pageRow,jdbcType=INTEGER}
+	</if>
+  </select>
+  <!--select end -->
+  
+  <!--select begin -->
+  <select id="selectByEntityParams" resultMap="BaseResultMap" parameterType="com.wrw.qianxingsubject.org.entity.Role" >
+     select 
+    <include refid="Base_Column_List" />
+    from role a
+    where 1=1
+    <if test="firstResult !=null and pageRow !=null">
+			limit #{firstResult,jdbcType=INTEGER},#{pageRow,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="countByEntityParams" resultType="java.lang.Integer" parameterType="com.wrw.qianxingsubject.org.entity.Role" >
+     select count(1)
+    from role a
+    where 1=1
+    <if test="firstResult !=null and pageRow !=null">
+			limit #{firstResult,jdbcType=INTEGER},#{pageRow,jdbcType=INTEGER}
+	</if>
+  </select>
+  <!--select end -->
+</mapper>

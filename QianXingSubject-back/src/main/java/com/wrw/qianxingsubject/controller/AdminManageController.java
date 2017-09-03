@@ -36,23 +36,6 @@ public class AdminManageController {
 	}
 
 	/*
-	 * 跳转到用户编辑页
-	 */
-	@RequestMapping(value = "dialog/edit/{id}")
-	public String dialogEdit(@PathVariable long id, HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		if (id != 0) {
-			Administrator admin = administratorService.findById(id);
-			System.out.println(admin.getAdminEmail());
-			session.setAttribute("chose_admin", admin);
-		} else {
-			session.setAttribute("chose_admin", null);
-		}
-		return "/system/dialog/admin_createOredit";
-	}
-	
-	/*
 	 * json返回创建/编辑是否成功
 	 */
 	@ResponseBody

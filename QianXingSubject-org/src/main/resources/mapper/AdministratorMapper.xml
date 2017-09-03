@@ -11,23 +11,22 @@
 			<result column="admin_email" property="adminEmail" jdbcType="VARCHAR"/>
 			<result column="admin_registered" property="adminRegistered" jdbcType="TIMESTAMP"/>
 			<result column="admin_status" property="adminStatus" jdbcType="INTEGER"/>
-			<result column="admin_right" property="adminRight" jdbcType="INTEGER"/>
 		</resultMap>
 		
 		<sql id="Base_Column_List">
-			id, admin_name, admin_password, admin_nicename, admin_email, admin_registered, admin_status, admin_right
+			id, admin_name, admin_password, admin_nicename, admin_email, admin_registered, admin_status
 		</sql>
-
+		
 		<!-- 通过名字查询 -->
   		<select id="select" parameterType="com.wrw.qianxingsubject.org.entity.Administrator" resultMap="BaseResultMap">
   			select
 		    <include refid="Base_Column_List" />
-		    from administrator
+		    from admin
 		    where ${key} = #{ value }
   		</select>
   		
   		<update id="update">
-  			update administrator
+  			update admin
   			<set >
 		      <if test="adminName != null" >
 		        admin_name = #{adminName,jdbcType=VARCHAR},
@@ -53,7 +52,7 @@
   		
   		<!-- 更改密码 -->
   		<update id="updatePassword" parameterType="com.wrw.qianxingsubject.org.dto.AdministratorDTO">
-  			update administrator 
+  			update admin 
   			set 
   			admin_password = #{ newPwd, jdbcType=VARCHAR }
 		    where id = #{ id }
@@ -63,11 +62,11 @@
   			SELECT
 	          <include refid="Base_Column_List" />
 	      	FROM
-	          administrator
+	          admin
   		</select>
   		
   		<insert id="insert" parameterType="com.wrw.qianxingsubject.org.dto.AdministratorDTO">
-  			insert into administrator
+  			insert into admin
 		    <trim prefix="(" suffix=")" suffixOverrides="," >
 		      <if test="adminName != null" >
 		        admin_name,

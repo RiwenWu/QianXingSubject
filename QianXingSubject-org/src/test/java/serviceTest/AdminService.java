@@ -87,4 +87,6 @@ public class AdminService {
 		adminDTO.setAdminNicename("昵称");
 		administratorService.editAdmin(adminDTO);
 	}
+	
+
 }

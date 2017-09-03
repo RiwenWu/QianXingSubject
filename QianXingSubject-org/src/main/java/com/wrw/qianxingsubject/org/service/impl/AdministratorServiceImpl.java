@@ -13,6 +13,7 @@ import com.github.pagehelper.PageInfo;
 import com.wrw.qianxingsubject.common.JsonResult;
 import com.wrw.qianxingsubject.common.ThisSystemException;
 import com.wrw.qianxingsubject.org.dao.AdministratorMapper;
+import com.wrw.qianxingsubject.org.dao.RoleMapper;
 import com.wrw.qianxingsubject.org.dto.AdministratorDTO;
 import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
@@ -23,6 +24,9 @@ public class AdministratorServiceImpl implements AdministratorService{
 
 	@Autowired
 	AdministratorMapper administratorDao;
+	
+	@Autowired
+	RoleMapper roleDao;
 	
 	@Override
 	public Administrator login(AdministratorDTO adminDTO) {

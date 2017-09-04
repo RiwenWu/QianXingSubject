@@ -1,7 +1,9 @@
 package serviceTest;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -39,6 +41,25 @@ public class RoleServiceTest {
 		List<Role> rolelist = queryResult.getQueryResult();
 		for(Role r : rolelist) {
 			System.out.println(r.toString());
-		}
+		} 
+	}
+	
+	@Test
+	public void listMapTest() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("roleId", 3);
+		QueryResult<Role> queryResult = new QueryResult();
+		queryResult = roleService.list(map);
+		System.out.println(queryResult.getCount());
+		System.out.println(queryResult.getQueryResult());
+	}
+	
+	@Test
+	public void listClazzTest() {
+		Role r = new Role();
+		r.setRoleId(2);
+		QueryResult<Role> queryResult = new QueryResult();
+		queryResult = roleService.list(r);
+		System.out.println(queryResult.getCount());
 	}
 }

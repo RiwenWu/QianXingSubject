@@ -1,9 +1,12 @@
 package com.wrw.qianxingsubject.org.service.impl;
 
-import static com.wrw.qianxingsubject.common.AssertThrowUtil.*;
+import static com.wrw.qianxingsubject.common.AssertThrowUtil.$;
+import static com.wrw.qianxingsubject.common.AssertThrowUtil.assertEquals;
+import static com.wrw.qianxingsubject.common.AssertThrowUtil.assertNotNulll;
 
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,26 +87,13 @@ public class AdministratorServiceImpl implements AdministratorService{
 		return admin;
 	}
 
-	/*
-	 * 创建管理员
-	 */
 	@Override
-	public void createAdmin(AdministratorDTO adminDTO) {
-		//验证参数
-		assertNotNulll("用户名空了！！！",adminDTO.getAdminName());
-		assertNotNulll("密码空了！！！",adminDTO.getAdminPassword());
-		assertNotNulll("昵称空了！！！",adminDTO.getAdminNicename());
-		
-		adminDTO.setAdminRegistered(new Date());
-		administratorDao.insert(adminDTO);
-	}
-
-	/*
-	 * 修改管理员
-	 */
-	@Override
-	public void editAdmin(AdministratorDTO adminDTO) {
-		administratorDao.update(adminDTO);
+	public void addOrUpdata(AdministratorDTO adminDTO) {
+		if (adminDTO.getId() == 0  ) {
+			administratorDao.insert(adminDTO);
+		} else {
+			administratorDao.update(adminDTO);
+		}
 	}
 
 }

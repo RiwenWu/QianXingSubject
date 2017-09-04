@@ -34,7 +34,7 @@
                         <div class="col-md">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <a href="javascript:open_container(0);" class="box-btn btn-sm btn-info btn-flat pull-left">创建管理员</a>
+                                    <a href="javascript:open_container(0, null);" class="box-btn btn-sm btn-info btn-flat pull-left">创建管理员</a>
                                     
                                     <#include "dialog/admin_create.ftl">
                                     
@@ -70,9 +70,9 @@
                                                 <td class="contentCenter" v-else="el.userRight==0">用户</td>
                                                 <td class="contentCenter">{{el.adminRegistered}}</td>
                                                 <td class="contentCenter" v-if="el.adminStatus==1">正常</td>
-                                                <td class="contentCenter" v-else="el.adminStatus==0">已删除</td>
+                                                <td class="contentCenter" v-else="el.adminStatus==0">禁用</td>
                                                 <td>
-                                                    <input class="btn btn-success btn-xs" v-on:click="javascript:open_container(el.id)" value="编辑" type="button" />
+                                                    <input class="btn btn-success btn-xs" v-on:click="editUser(el.id, el)" value="编辑" type="button" />
                                                     <input class="btn btn-danger btn-xs" v-on:click="deleteUser(el.id)" value="删除" type="button" />
                                                 </td>
                                             </tr>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="box-footer clearfix">
                                 <ul class="pagination no-margin pull-right">
-                                    <li v-if="!dataTag.isFirstPage"><a href="javscript:;" v-on:click="getAllTag(dataTag.prePage)">«</a></li>
+                                    <li v-if="!dataTag.isFirstPage"><a href="javscript:;" v-on:click="getAllTag(dataTag.prePage)"></a></li>
                                     <li v-if="dataTag.isFirstPage" class="disabled"><a href="javscript:;">«</a></li>
                                     <li v-for="item in dataTag.navigatepageNums" :class="item == dataTag.pageNum? 'active':''"><a href="javascript:void(0);" v-text="item" v-on:click="getAllTag(item)"></a></li>
                                     <li v-if="!dataTag.isLastPage"><a href="javscript:;" v-on:click="getAllTag(dataTag.nextPage)">»</a><b></b></li>
@@ -114,6 +114,8 @@
         <script src="static/plugins/AdminLTE/dist/js/adminlte.min.js"></script>
         <!--vue-->
         <script src="static/plugins/vue/vue.min.js"></script>
+        <script src="static/js/common.js"></script>
+        
         <script type="text/javascript">
 	        $(function() {
 	            getAllTag(0);
@@ -127,10 +129,31 @@
 	            methods: {
 	                getAllTag: function(id) {
 	                    getAllTag(id);
-	                }
+	                },
+		            editUser: function(id, userinfo) {
+		                open_container(id, userinfo);
+		            },
+		            deleteUser: function(id) {
+		            	updateStatus(id);
+		            }
 	            }
 	        });
 	
+			<!-- 删除操作 -->
+			function updateStatus(id){
+				ajaxSubmitForm("updateStatus/"+id, $(this).serialize(),
+			    	function(data) {
+			        	if (data.success) {
+			            	window.location.reload();
+			            } else {
+			            	deletMSG('error', data.msg);
+			            }
+			        },
+			        function(data) {
+			        	deletMSG('error', '不造哪里错了');
+			        }
+				);
+			}
 	
 	        <!--查询所有用户信息-->
 	        function getAllTag(id) {
@@ -140,6 +163,106 @@
 	            });
 	        }
 	        
+	        <!-- 新增 Or 编辑 -->
+	        function open_container(id, obj) {
+			    var title = '新增管理员';
+			    if (id != 0) {
+			        title = '修改';
+			        $("#Name").val(obj.adminName);
+        			$("#Nicename").val(obj.adminNicename);
+        			$("#Password").val(obj.adminPassword);
+        			$("#RePassword").val(obj.adminPassword);
+        			
+			    }
+			    document.getElementById('myModalLabel').innerHTML = title;
+			    $('#myModal').modal('show');
+			
+			    $(function() {
+			        $('#Admin-form').bootstrapValidator({
+			            fields: {
+			                adminName: {
+			                    validators: {
+			                        notEmpty: {
+			                            message: '不能为空'
+			                        }
+			                        /*
+			                        ,
+			                        threshold: 6, //有6字符以上才发送ajax请求，（input中输入一个字符，插件会向服务器发送一次，设置限制，6字符以上才开始）
+			                        remote: { //ajax验证。server result:{"valid",true or false} 向服务发送当前input name值，获得一个json数据。例表示正确：{"valid",true}  
+			                            url: 'exist2.do', //验证地址
+			                            message: '用户已存在', //提示消息
+			                            delay: 2000, //每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+			                            type: 'POST' //请求方式
+			                            /**自定义提交数据，默认值提交当前input value
+			                             *  data: function(validator) {
+			                                  return {
+			                                      password: $('[name="passwordNameAttributeInYourForm"]').val(),
+			                                      whatever: $('[name="whateverNameAttributeInYourForm"]').val()
+			                                  };
+			                               }
+			                        }
+			                        regexp: {
+			                            regexp: /^[a-zA-Z0-9_\.]+$/,
+			                            message: '用户名由数字字母下划线和.组成'
+			                        }
+			                        */
+			                    }
+			                },
+			                adminNicename: {
+			                    validators: {
+			                        notEmpty: {
+			                            message: '不能为空'
+			                        }
+			                    }
+			                },
+			                adminPassword: {
+			                    message: '密码无效',
+			                    validators: {
+			                        notEmpty: {
+			                            message: '不能为空'
+			                        },
+			                        stringLength: {
+			                            min: 6,
+			                            max: 30,
+			                            message: '长度必须在6到30之间'
+			                        },
+			                        different: { //不能和用户名相同
+			                            field: 'adminName',
+			                            message: '不能和用户名相同'
+			                        }
+			                    }
+			                },
+			                renewPwd: {
+			                    message: '密码无效',
+			                    validators: {
+			                        notEmpty: {
+			                            message: '不能为空'
+			                        },
+			                        identical: { //相同
+			                            field: 'adminPassword', //需要进行比较的input name值
+			                            message: '两次密码不一致'
+			                        }
+			                    }
+			                }
+			            }
+			        }).
+			        on('success.form.bv', function(e) {
+			            e.preventDefault();
+			            ajaxSubmitForm("addOrupdata/" + id, $(this).serialize(),
+			                function(data) {
+			                    if (data.success) {
+			                        window.location.reload();
+			                    } else {
+			                        deletMSG('error', data.msg);
+			                    }
+			                },
+			                function(data) {
+			                    deletMSG('error', '不造哪里错了');
+			                }
+			            );
+			        });
+			    });
+			}
         </script>
         
         

@@ -18,7 +18,7 @@ import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminManageController {
 
 	@Autowired
@@ -39,38 +39,49 @@ public class AdminManageController {
 	 * json返回创建/编辑是否成功
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/save")
-	public JsonResult saveAdmin(AdministratorDTO adminDTO) {
-		
+	@RequestMapping(value = "/addOrupdata/{id}")
+	public JsonResult saveAdmin(@PathVariable Integer id, AdministratorDTO adminDTO, HttpServletRequest request) {
+
 		JsonResult jsonResult = new JsonResult();
+		// adminDTO.setId((long)id);
 		try {
-			administratorService.createAdmin(adminDTO);
+			administratorService.addOrUpdata(adminDTO);
 			jsonResult.setSuccess(true);
 			return jsonResult;
-		} catch (Exception e){
+		} catch (Exception e) {
 			jsonResult.setSuccess(false);
 			jsonResult.setMsg("后台：不造哪里错了，看日志吧~~~~~");
 			return jsonResult;
 		}
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value = "/edit")
-	public JsonResult editAdmin(AdministratorDTO adminDTO, HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
+	@RequestMapping(value = "/updateStatus/{id}", method=RequestMethod.POST)
+	public JsonResult updateStatus(@PathVariable Integer id, HttpServletRequest request) {
+	
 		JsonResult jsonResult = new JsonResult();
+		Administrator admin = administratorService.findById(id);
+		System.out.println(admin.getAdminName());
 		try {
-			Administrator admin = (Administrator) session.getAttribute("chose_admin");
-			adminDTO.setId(admin.getId());
-			administratorService.editAdmin(adminDTO);
+			if (admin == null) {
+				jsonResult.setSuccess(false);
+				jsonResult.setMsg("后台：不造哪里错了，看日志吧~~~~~");
+				return jsonResult;
+			}
+			if (admin.getAdminStatus() == 0) {
+				jsonResult.setSuccess(false);
+				jsonResult.setMsg("已经禁用了");
+				return jsonResult;
+			}
+			AdministratorDTO adminDTO = (AdministratorDTO) admin;
+			adminDTO.setAdminStatus(0);
+			administratorService.addOrUpdata(adminDTO);
 			jsonResult.setSuccess(true);
 			return jsonResult;
-		} catch (Exception e){
+		} catch (Exception e) {
 			jsonResult.setSuccess(false);
 			jsonResult.setMsg("后台：不造哪里错了，看日志吧~~~~~");
 			return jsonResult;
 		}
-		
 	}
 }

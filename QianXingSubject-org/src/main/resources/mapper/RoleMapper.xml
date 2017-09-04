@@ -86,8 +86,8 @@
     <include refid="Base_Column_List" />
     from role a
     where 1=1
-    <if test="firstResult !=null and pageRow !=null">
-			limit #{firstResult,jdbcType=INTEGER},#{pageRow,jdbcType=INTEGER}
+    <if test="roleId !=null">
+		and id = #{roleId,jdbcType=INTEGER}
 	</if>
   </select>
   
@@ -95,8 +95,8 @@
     select count(1)
     from role a
     where 1=1
-    <if test="firstResult !=null and pageRow !=null">
-			limit #{firstResult,jdbcType=INTEGER},#{pageRow,jdbcType=INTEGER}
+    <if test="roleId !=null">
+		and id = #{roleId,jdbcType=INTEGER}
 	</if>
   </select>
   <!--select end -->

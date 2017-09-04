@@ -71,21 +71,12 @@ public class AdminService {
 	}
 	
 	@Test
-	public void createAdmin() {
+	public void addOrupdataTest() {
 		AdministratorDTO adminDTO = new AdministratorDTO();
-		adminDTO.setAdminName("测试");
+		adminDTO.setAdminName("admin123");
+		adminDTO.setAdminNicename("测试");
 		adminDTO.setAdminPassword("123456");
-		adminDTO.setAdminRegistered(new Date());
-		administratorService.createAdmin(adminDTO);
-	}
-	
-	@Test
-	public void editAdmin() {
-		AdministratorDTO adminDTO = new AdministratorDTO();
-		adminDTO.setId((long)5);
-		adminDTO.setAdminName("测试");
-		adminDTO.setAdminNicename("昵称");
-		administratorService.editAdmin(adminDTO);
+		administratorService.addOrUpdata(adminDTO);
 	}
 	
 

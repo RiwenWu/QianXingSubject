@@ -43,9 +43,6 @@
 		      <if test="adminStatus != null" >
 		        admin_status = #{adminStatus,jdbcType=INTEGER},
 		      </if>
-		      <if test="adminRight != null" >
-		        admin_right = #{adminRight,jdbcType=INTEGER},
-		      </if>
 		    </set>
 		    where id = #{ id }
   		</update>
@@ -83,9 +80,6 @@
 		      <if test="adminStatus != null" >
 		        admin_status,
 		      </if>
-		      <if test="adminRight != null" >
-		        admin_right,
-		      </if>
 		      <if test="adminRegistered != null" >
 		        admin_registered,
 		      </if>
@@ -105,9 +99,6 @@
 		      </if>
 		      <if test="adminStatus != null" >
 		        #{adminStatus,jdbcType=INTEGER},
-		      </if>
-		      <if test="adminRight != null" >
-		        #{adminRight,jdbcType=INTEGER},
 		      </if>
 		      <if test="adminRegistered != null" >
 		        #{adminRegistered,jdbcType=TIMESTAMP},

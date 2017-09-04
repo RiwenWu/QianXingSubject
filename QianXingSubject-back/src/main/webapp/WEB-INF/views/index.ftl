@@ -9,11 +9,12 @@
     <#include "/path/head_css_js.ftl">
 
 </head>
-//获取session里的admin
-<#if  Session["admin"]?exists>
 
 <body class="hold-transition skin-blue sidebar-mini">
-<#import "/path/main-sidebar.ftl" as main_sidebar>
+<!-- 获取session里的admin -->
+<#if  Session["admin"]?exists>
+
+	<#import "/path/main-sidebar.ftl" as main_sidebar>
 
     <div class="wrapper">
 

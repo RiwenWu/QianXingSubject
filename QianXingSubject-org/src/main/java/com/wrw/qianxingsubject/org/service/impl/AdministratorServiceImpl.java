@@ -89,6 +89,8 @@ public class AdministratorServiceImpl implements AdministratorService{
 
 	@Override
 	public void addOrUpdata(AdministratorDTO adminDTO) {
+		if(adminDTO.getId() != null)
+			System.out.println(adminDTO.getId());
 		if (adminDTO.getId() == 0  ) {
 			administratorDao.insert(adminDTO);
 		} else {

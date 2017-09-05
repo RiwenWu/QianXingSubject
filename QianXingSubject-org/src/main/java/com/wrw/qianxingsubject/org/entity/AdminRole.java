@@ -30,4 +30,16 @@ public class AdminRole {
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
+    
+    @Override
+    public String toString() {
+    	StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Id=").append(adminRoleId);
+        sb.append(", admin_Id=").append(adminId);
+        sb.append(", role_Id=").append(roleId);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -1,32 +1,32 @@
 <!-- Modal form-->
-<div class="modal fade bs-example-modal-sm" id="createModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" id="editModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm ">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="createModalLabel"></h4>
+                <h4 class="modal-title" id="editModalLabel"></h4>
             </div>
             
-            <form id="admin_create_form" method="post" role="form">
+            <form id="admin_edit_form" method="post" role="form">
                 <div class="modal-body" id="modal-bodyku">
                     <div class="form-group has-feedback">
                         <label for="adminName">用户名：</label>
-                        <input type="text" class="form-control" name="adminName" placeholder="请输入用户名" autocomplete="off">
+                        <input type="text" class="form-control" name="adminName" id="Name" placeholder="请输入用户名" autocomplete="off">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
                         <label for="adminNicename">昵称：</label>
-                        <input type="text" class="form-control" name="adminNicename" placeholder="请输入昵称" autocomplete="off">
+                        <input type="text" class="form-control" name="adminNicename" id="Nicename" placeholder="请输入昵称" autocomplete="off">
                         <span class="glyphicon glyphicon-cog form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
                         <label for="adminPassword">设置密码：</label>
-                        <input type="password" class="form-control" name="adminPassword"placeholder="请输入新密码" autocomplete="off">
+                        <input type="password" class="form-control" name="adminPassword" id="Password" placeholder="请输入新密码" autocomplete="off">
                         <span class="glyphicon glyphicon-cog form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
                         <label for="renewPwd">再次确认：</label>
-                        <input type="password" name="renewPwd" class="form-control"placeholder="请再次确认新密码" autocomplete="off">
+                        <input type="password" name="renewPwd" class="form-control"  id="RePassword" placeholder="请再次确认新密码" autocomplete="off">
                         <span class="glyphicon glyphicon-cog form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">

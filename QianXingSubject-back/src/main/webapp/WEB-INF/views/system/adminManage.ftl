@@ -34,10 +34,7 @@
                         <div class="col-md">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <a href="javascript:open_container(0, null);" class="box-btn btn-sm btn-info btn-flat pull-left">创建管理员</a>
-                                    
-                                    <#include "dialog/admin_create.ftl">
-                                    
+                                    <a href="javascript:open_create();" class="box-btn btn-sm btn-info btn-flat pull-left">创建管理员</a>
                                     <div class="box-tools">
                                         <div class="input-group input-group-sm" style="width: 150px;">
                                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -73,7 +70,6 @@
                                                 <td class="contentCenter" v-else="el.adminStatus==0">禁用</td>
                                                 <td>
                                                     <input class="btn btn-success btn-xs" v-on:click="editUser(el.id, el)" value="编辑" type="button" />
-                                                    <input class="btn btn-danger btn-xs" v-on:click="deleteUser(el.id)" value="删除" type="button" />
                                                 </td>
                                             </tr>
                                             <tr v-show="">
@@ -108,6 +104,10 @@
         </div>
         <!-- ./wrapper -->
         
+        <!-- 新增 & 编辑  的模态框 -->
+		<#include "dialog/admin_create.ftl">
+		<#include "dialog/admin_edit.ftl">
+		
 	    <!-- Bootstrap 3.3.7 -->
         <script src="static/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
@@ -130,30 +130,14 @@
 	                getAllTag: function(id) {
 	                    getAllTag(id);
 	                },
-		            editUser: function(id, userinfo) {
-		                open_container(id, userinfo);
+		            editUser: function(id, admininfo) {
+		                open_container(id, admininfo);
 		            },
-		            deleteUser: function(id) {
-		            	updateStatus(id);
+		            createUser: function() {
+		            	open_create();
 		            }
 	            }
 	        });
-	
-			<!-- 删除操作 -->
-			function updateStatus(id){
-				ajaxSubmitForm("updateStatus/"+id, $(this).serialize(),
-			    	function(data) {
-			        	if (data.success) {
-			            	window.location.reload();
-			            } else {
-			            	deletMSG('error', data.msg);
-			            }
-			        },
-			        function(data) {
-			        	deletMSG('error', '不造哪里错了');
-			        }
-				);
-			}
 	
 	        <!--查询所有用户信息-->
 	        function getAllTag(id) {
@@ -163,22 +147,29 @@
 	            });
 	        }
 	        
-	        <!-- 新增 Or 编辑 -->
+	        <!-- 新增 -->
+	        function open_create(){
+	        	var title = '新增';
+	        	document.getElementById('createModalLabel').innerHTML = title;
+			    $('#createModal').modal('show');
+			    submit(0, '#admin_create_form');
+	        }
+	        
+	        <!-- 编辑 -->
 	        function open_container(id, obj) {
-			    var title = '新增管理员';
-			    if (id != 0) {
-			        title = '修改';
-			        $("#Name").val(obj.adminName);
-        			$("#Nicename").val(obj.adminNicename);
-        			$("#Password").val(obj.adminPassword);
-        			$("#RePassword").val(obj.adminPassword);
-        			
-			    }
-			    document.getElementById('myModalLabel').innerHTML = title;
-			    $('#myModal').modal('show');
-			
-			    $(function() {
-			        $('#Admin-form').bootstrapValidator({
+			    var title = '编辑';
+			    
+			    $("#Name").val(obj.adminName);
+        		$("#Nicename").val(obj.adminNicename);
+        		$("#Password").val(obj.adminPassword);
+        		$("#RePassword").val(obj.adminPassword);
+        		
+			    document.getElementById('editModalLabel').innerHTML = title;
+			    $('#editModal').modal('show');
+			    submit(id,'#admin_edit_form');
+			}
+			    function submit(id,str){
+			        $(str).bootstrapValidator({
 			            fields: {
 			                adminName: {
 			                    validators: {
@@ -261,7 +252,7 @@
 			                }
 			            );
 			        });
-			    });
+			    
 			}
         </script>
         

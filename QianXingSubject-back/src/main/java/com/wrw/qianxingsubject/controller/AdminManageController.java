@@ -40,10 +40,10 @@ public class AdminManageController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/addOrupdata/{id}")
-	public JsonResult saveAdmin(@PathVariable Integer id, AdministratorDTO adminDTO, HttpServletRequest request) {
+	public JsonResult saveAdmin(@PathVariable Integer id, AdministratorDTO adminDTO) {
 
 		JsonResult jsonResult = new JsonResult();
-		// adminDTO.setId((long)id);
+		adminDTO.setId((long)id);
 		try {
 			administratorService.addOrUpdata(adminDTO);
 			jsonResult.setSuccess(true);
@@ -55,33 +55,4 @@ public class AdminManageController {
 		}
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/updateStatus/{id}", method=RequestMethod.POST)
-	public JsonResult updateStatus(@PathVariable Integer id, HttpServletRequest request) {
-	
-		JsonResult jsonResult = new JsonResult();
-		Administrator admin = administratorService.findById(id);
-		System.out.println(admin.getAdminName());
-		try {
-			if (admin == null) {
-				jsonResult.setSuccess(false);
-				jsonResult.setMsg("后台：不造哪里错了，看日志吧~~~~~");
-				return jsonResult;
-			}
-			if (admin.getAdminStatus() == 0) {
-				jsonResult.setSuccess(false);
-				jsonResult.setMsg("已经禁用了");
-				return jsonResult;
-			}
-			AdministratorDTO adminDTO = (AdministratorDTO) admin;
-			adminDTO.setAdminStatus(0);
-			administratorService.addOrUpdata(adminDTO);
-			jsonResult.setSuccess(true);
-			return jsonResult;
-		} catch (Exception e) {
-			jsonResult.setSuccess(false);
-			jsonResult.setMsg("后台：不造哪里错了，看日志吧~~~~~");
-			return jsonResult;
-		}
-	}
 }

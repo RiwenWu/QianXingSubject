@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>后台首页</title>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="static/plugins/select2/dist/css/select2.min.css">
+    
     <#include "/path/head_css_js.ftl">
 </head>
 
@@ -108,6 +111,15 @@
 		<#include "dialog/admin_create.ftl">
 		<#include "dialog/admin_edit.ftl">
 		
+		
+		<!-- REQUIRED JS SCRIPTS -->
+		<!-- jQuery 3.2.1 -->
+		<script src="static/plugins/jQuery/jquery-3.2.1.min.js"></script>
+		<!--layer-->
+		<script src="static/plugins/layer/layer.js"></script>
+		<script src="static/plugins/lobibox/js/lobibox.min.js"></script>
+		<!-- bootstrapValidator -->
+		<script src="static/plugins/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 	    <!-- Bootstrap 3.3.7 -->
         <script src="static/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->
@@ -115,8 +127,15 @@
         <!--vue-->
         <script src="static/plugins/vue/vue.min.js"></script>
         <script src="static/js/common.js"></script>
+		<!-- Select2 -->
+		<script src="static/plugins/select2/dist/js/select2.full.min.js"></script>
         
         <script type="text/javascript">
+	
+			$(document).ready(function() {
+			  $(".select2").select2();
+			});
+        
 	        $(function() {
 	            getAllTag(0);
 	        });

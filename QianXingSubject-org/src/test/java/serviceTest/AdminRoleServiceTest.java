@@ -31,9 +31,9 @@ public class AdminRoleServiceTest {
 	@Test
 	public void insertTest() {
 		AdminRole ar = new AdminRole();
-		ar.setAdminRoleId(1);
+		ar.setAdminRoleId(2);
 		ar.setAdminId((long)1);
-		ar.setRoleId(1);
+		ar.setRoleId(3);
 		adminRoleService.insert(ar);
 	}
 

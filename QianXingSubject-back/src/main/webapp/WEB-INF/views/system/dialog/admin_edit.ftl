@@ -1,5 +1,5 @@
 <!-- Modal form-->
-<div class="modal fade bs-example-modal-sm" id="editModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" id="editModal" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm ">
         <div class="modal-content">
             <div class="modal-header">
@@ -50,7 +50,18 @@
 		                    </label>
 		                  </div>
 	                </div>
-                    </div>
+                    <div class="form-group has-feedback">
+						<label>Minimal</label>
+						<select class="form-control select2" style="width: 100%;">
+							<option selected="selected">Alabama</option>
+							<option>Alaska</option>
+							<option>California</option>
+							<option>Delaware</option>
+							<option>Tennessee</option>
+							<option>Texas</option>
+							<option>Washington</option>
+						</select>
+					</div>
                 </div>
                 <div class="modal-footer" id="modal-footerq">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -61,23 +72,16 @@
     </div>
 </div>
 <!-- end of modal ------------------------------>
-<!-- REQUIRED JS SCRIPTS -->
-<!-- jQuery 3.2.1 -->
-<script src="static/plugins/jQuery/jquery-3.2.1.min.js"></script>
-<!--layer-->
-<script src="static/plugins/layer/layer.js"></script>
-<script src="static/plugins/lobibox/js/lobibox.min.js"></script>
-<!-- bootstrapValidator -->
-<script src="static/plugins/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+
 <script language="javascript">
 
-function deletMSG(type , msg) {
-	Lobibox.notify(type, {
-		size: 'mini',
-	    soundPath: 'static/plugins/lobibox/sounds/',
-	    position: 'center bottom',
-	    msg: msg
-	});
-}
+	function deletMSG(type , msg) {
+		Lobibox.notify(type, {
+			size: 'mini',
+		    soundPath: 'static/plugins/lobibox/sounds/',
+		    position: 'center bottom',
+		    msg: msg
+		});
+	}
  
 </script>

@@ -4,9 +4,8 @@ import static com.wrw.qianxingsubject.common.AssertThrowUtil.$;
 import static com.wrw.qianxingsubject.common.AssertThrowUtil.assertEquals;
 import static com.wrw.qianxingsubject.common.AssertThrowUtil.assertNotNulll;
 
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,6 +91,7 @@ public class AdministratorServiceImpl implements AdministratorService{
 		if(adminDTO.getId() != null)
 			System.out.println(adminDTO.getId());
 		if (adminDTO.getId() == 0  ) {
+			adminDTO.setAdminRegistered(new Date());
 			administratorDao.insert(adminDTO);
 		} else {
 			administratorDao.update(adminDTO);

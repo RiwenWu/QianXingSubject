@@ -54,12 +54,4 @@ public class RoleServiceTest {
 		System.out.println(queryResult.getQueryResult());
 	}
 	
-	@Test
-	public void listClazzTest() {
-		Role r = new Role();
-		r.setRoleId(2);
-		QueryResult<Role> queryResult = new QueryResult();
-		queryResult = roleService.list(r);
-		System.out.println(queryResult.getCount());
-	}
 }

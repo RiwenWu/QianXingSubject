@@ -20,7 +20,7 @@
                 <@main_sidebar.sidebar "adminManage">
                 </@main_sidebar.sidebar>
                 <!-- Content Wrapper. Contains page content -->
-                <div class="content-wrapper">
+                <div class="content-wrapper" id="app">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
@@ -33,7 +33,7 @@
                         </ol>
                     </section>
                     <!-- Main content -->
-                    <section class="content container-fluid" id="app">
+                    <section class="content container-fluid">
                         <div class="col-md">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
@@ -84,7 +84,7 @@
                             </div>
                             <div class="box-footer clearfix">
                                 <ul class="pagination no-margin pull-right">
-                                    <li v-if="!dataTag.isFirstPage"><a href="javscript:;" v-on:click="getAllTag(dataTag.prePage)"></a></li>
+                                    <li v-if="!dataTag.isFirstPage"><a href="javscript:;" v-on:click="getAllTag(dataTag.prePage)">«</a></li>
                                     <li v-if="dataTag.isFirstPage" class="disabled"><a href="javscript:;">«</a></li>
                                     <li v-for="item in dataTag.navigatepageNums" :class="item == dataTag.pageNum? 'active':''"><a href="javascript:void(0);" v-text="item" v-on:click="getAllTag(item)"></a></li>
                                     <li v-if="!dataTag.isLastPage"><a href="javscript:;" v-on:click="getAllTag(dataTag.nextPage)">»</a><b></b></li>
@@ -95,22 +95,27 @@
                                 <h4><strong>注：</strong><br></h4>
                                 <p>删除用户不会删除彻底删除数据</p>
                             </div>
+                            <div class="form-group has-feedback">
+								<label>角色：</label>
+								<select class="form-control select2" style="width: 100%;"  multiple="multiple">
+									<option v-for="el in roleList.queryResult" :value="el.roleId">{{el.roleName}}</option>
+								</select>
+							</div>
                         </div>
+                        <!-- 新增 & 编辑  的模态框 -->
+						<#include "dialog/admin_create.ftl">
+						<#include "dialog/admin_edit.ftl">
                     </section>
                     <!-- /.content -->
                 </div>
                 <!-- /.content-wrapper -->
                 <!-- Main Footer -->
                 <#include "/path/main-footer.ftl">
-                    <!-- Control Sidebar -->
-                    <#include "/path/control-sidebar.ftl">
+                <!-- Control Sidebar -->
+                <#include "/path/control-sidebar.ftl">
+                
         </div>
         <!-- ./wrapper -->
-        
-        <!-- 新增 & 编辑  的模态框 -->
-		<#include "dialog/admin_create.ftl">
-		<#include "dialog/admin_edit.ftl">
-		
 		
 		<!-- REQUIRED JS SCRIPTS -->
 		<!-- jQuery 3.2.1 -->
@@ -138,17 +143,16 @@
         
 	        $(function() {
 	            getAllTag(0);
+	            getRoleList();
 	        });
 	
 	        var vm = new Vue({
 	            el: '#app',
 	            data: {
-	                dataTag: {}
+	                dataTag: {},
+	                roleList: {}
 	            },
 	            methods: {
-	                getAllTag: function(id) {
-	                    getAllTag(id);
-	                },
 		            editUser: function(id, admininfo) {
 		                open_container(id, admininfo);
 		            },
@@ -166,10 +170,15 @@
 	            });
 	        }
 	        
+	        <!-- 查询所有角色 -->
+		 	function getRoleList() {
+		 		$.get("../role/findRoleList", function(result) {
+		 			vm.roleList = result;
+		 		});
+		 	}
+	        
 	        <!-- 新增 -->
 	        function open_create(){
-	        	var title = '新增';
-	        	document.getElementById('createModalLabel').innerHTML = title;
 			    $('#createModal').modal('show');
 			    submit(0, '#admin_create_form');
 	        }
@@ -273,9 +282,8 @@
 			        });
 			    
 			}
-        </script>
-        
-        
+	 	
+	 	</script>
 </body>
 
 </html>

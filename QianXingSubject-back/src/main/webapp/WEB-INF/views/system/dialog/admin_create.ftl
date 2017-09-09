@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="createModalLabel"></h4>
+                <h4 class="modal-title" id="createModalLabel">新增</h4>
             </div>
             
             <form id="admin_create_form" method="post" role="form">
@@ -52,15 +52,9 @@
 	                	</div>
 	                </div>
 	                <div class="form-group has-feedback">
-						<label>Minimal</label>
-						<select class="form-control select2" style="width: 100%;">
-							<option selected="selected">Alabama</option>
-							<option>Alaska</option>
-							<option>California</option>
-							<option>Delaware</option>
-							<option>Tennessee</option>
-							<option>Texas</option>
-							<option>Washington</option>
+						<label>角色：</label>
+						<select class="form-control select2" style="width: 100%;"  multiple="multiple">
+							<option v-for="el in roleList.queryResult" :value="el.roleId">{{el.roleName}}</option>
 						</select>
 					</div>
                 </div>
@@ -84,5 +78,5 @@
 		    msg: msg
 		});
 	}
- 
+
 </script>

@@ -28,8 +28,8 @@ public abstract class ServiceSupport<T> implements IServiceSupport<T> {
 	}
 
 	@Override
-	public void updateByPrimaryKey(T clazz) {
-		this.getMapperSupport().updateByPrimaryKey(clazz);
+	public void updateByPrimaryKey(Integer id) {
+		this.getMapperSupport().updateByPrimaryKey(id);
 	}
 
 	@Override

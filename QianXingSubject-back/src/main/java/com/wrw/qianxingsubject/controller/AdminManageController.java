@@ -1,21 +1,15 @@
 package com.wrw.qianxingsubject.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wrw.qianxingsubject.common.JsonResult;
 import com.wrw.qianxingsubject.org.dto.AdministratorDTO;
-import com.wrw.qianxingsubject.org.entity.Administrator;
 import com.wrw.qianxingsubject.org.service.AdministratorService;
+import com.wrw.qianxingsubject.org.service.impl.AdminRoleService;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,6 +17,8 @@ public class AdminManageController {
 
 	@Autowired
 	AdministratorService administratorService;
+	@Autowired
+	AdminRoleService adminRoleService;
 
 	/*
 	 * json返回所有用户信息

@@ -53,7 +53,7 @@
 	                </div>
 	                <div class="form-group has-feedback">
 						<label>角色：</label>
-						<select class="form-control select2" style="width: 100%;"  multiple="multiple">
+						<select class="form-control select2" style="width: 100%;" name="roleId">
 							<option v-for="el in roleList.queryResult" :value="el.roleId">{{el.roleName}}</option>
 						</select>
 					</div>

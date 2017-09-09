@@ -22,7 +22,7 @@ public abstract interface MapperSupport<T>
 
     int updateByPrimaryKeySelective(T entity);
 
-    int updateByPrimaryKey(T entity);
+    int updateByPrimaryKey(Integer id);
 
 	List<T> selectByMapParams(Map<String, Object> params);
 

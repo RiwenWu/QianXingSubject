@@ -10,6 +10,16 @@ public class AdministratorDTO extends Administrator{
 	private String code;
 	
 	private String newPwd;
+	
+	private Integer roleId;
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
 
 	public String getCode() {
 		return code;

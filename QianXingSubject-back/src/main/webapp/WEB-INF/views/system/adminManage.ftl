@@ -95,12 +95,6 @@
                                 <h4><strong>注：</strong><br></h4>
                                 <p>删除用户不会删除彻底删除数据</p>
                             </div>
-                            <div class="form-group has-feedback">
-								<label>角色：</label>
-								<select class="form-control select2" style="width: 100%;"  multiple="multiple">
-									<option v-for="el in roleList.queryResult" :value="el.roleId">{{el.roleName}}</option>
-								</select>
-							</div>
                         </div>
                         <!-- 新增 & 编辑  的模态框 -->
 						<#include "dialog/admin_create.ftl">

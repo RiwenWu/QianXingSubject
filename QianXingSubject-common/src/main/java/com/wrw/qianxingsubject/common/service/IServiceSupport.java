@@ -12,7 +12,7 @@ public interface IServiceSupport<T> {
 
 	void deleteByPrimaryKey(Integer id);
 
-	void updateByPrimaryKey(T clazz);
+	void updateByPrimaryKey(Integer id);
 
 	void updateByPrimaryKeySelective(T clazz);
 	

@@ -22,7 +22,6 @@ public class RoleManageController {
 	@ResponseBody
 	@RequestMapping(value = "/findRoleList" ,method=RequestMethod.GET)
 	public QueryResult<Role> findRoleList() {
-		System.out.println(12);
 		QueryResult<Role> queryResult = new QueryResult();
 		queryResult = roleService.list();
 		return queryResult;

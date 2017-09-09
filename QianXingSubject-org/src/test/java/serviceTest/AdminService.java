@@ -73,12 +73,11 @@ public class AdminService {
 	@Test
 	public void addOrupdataTest() {
 		AdministratorDTO adminDTO = new AdministratorDTO();
-		adminDTO.setId((long)0);
-		adminDTO.setAdminName("admin123");
-		adminDTO.setAdminNicename("测试");
+		adminDTO.setId((long)1);
 		adminDTO.setAdminPassword("123456");
+		adminDTO.setRoleId(3);
 		administratorService.addOrUpdata(adminDTO);
 	}
 	
-
+	
 }

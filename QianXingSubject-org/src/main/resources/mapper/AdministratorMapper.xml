@@ -88,11 +88,11 @@
 		      <if test="adminName != null" >
 		        #{adminName,jdbcType=VARCHAR},
 		      </if>
-		      <if test="adminPassword != null" >
-		        #{adminPassword,jdbcType=VARCHAR},
-		      </if>
 		      <if test="adminNicename != null" >
 		        #{adminNicename,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminPassword != null" >
+		        #{adminPassword,jdbcType=VARCHAR},
 		      </if>
 		      <if test="adminEmail != null" >
 		        #{adminEmail,jdbcType=VARCHAR},

@@ -55,7 +55,6 @@
                                                 <th>用户名</th>
                                                 <th>昵称</th>
                                                 <th>邮箱</th>
-                                                <th>权限</th>
                                                 <th>创建时间</th>
                                                 <th>状态</th>
                                                 <th>操作</th>
@@ -66,8 +65,6 @@
                                                 <td class="contentCenter">{{el.adminName}}</td>
                                                 <td class="contentCenter">{{el.adminNicename}}</td>
                                                 <td class="contentCenter">{{el.adminEmail}}</td>
-                                                <td class="contentCenter" v-if="el.userRight==1">管理员</td>
-                                                <td class="contentCenter" v-else="el.userRight==0">用户</td>
                                                 <td class="contentCenter">{{el.adminRegistered}}</td>
                                                 <td class="contentCenter" v-if="el.adminStatus==1">正常</td>
                                                 <td class="contentCenter" v-else="el.adminStatus==0">禁用</td>

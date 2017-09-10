@@ -6,8 +6,8 @@
 		<resultMap type="com.wrw.qianxingsubject.org.entity.Administrator" id="BaseResultMap">
 			<id column="id" property="id" javaType="long" jdbcType="BIGINT"/>
 			<result column="admin_name" property="adminName" jdbcType="VARCHAR"/>
-			<result column="admin_password" property="adminPassword" jdbcType="VARCHAR"/>
 			<result column="admin_nicename" property="adminNicename" jdbcType="VARCHAR"/>
+			<result column="admin_password" property="adminPassword" jdbcType="VARCHAR"/>
 			<result column="admin_email" property="adminEmail" jdbcType="VARCHAR"/>
 			<result column="admin_registered" property="adminRegistered" jdbcType="TIMESTAMP"/>
 			<result column="admin_status" property="adminStatus" jdbcType="INTEGER"/>
@@ -31,11 +31,11 @@
 		      <if test="adminName != null" >
 		        admin_name = #{adminName,jdbcType=VARCHAR},
 		      </if>
-		      <if test="adminPassword != null" >
-		        admin_password = #{adminPassword,jdbcType=VARCHAR},
-		      </if>
 		      <if test="adminNicename != null" >
 		        admin_nicename = #{adminNicename,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminPassword != null" >
+		        admin_password = #{adminPassword,jdbcType=VARCHAR},
 		      </if>
 		      <if test="adminEmail != null" >
 		        admin_email = #{adminEmail,jdbcType=VARCHAR},
@@ -68,40 +68,40 @@
 		      <if test="adminName != null" >
 		        admin_name,
 		      </if>
-		      <if test="adminNicename != null" >
-		        admin_nicename,
-		      </if>
 		      <if test="adminPassword != null" >
 		        admin_password,
+		      </if>
+		      <if test="adminNicename != null" >
+		        admin_nicename,
 		      </if>
 		      <if test="adminEmail != null" >
 		        admin_email,
 		      </if>
-		      <if test="adminStatus != null" >
-		        admin_status,
-		      </if>
 		      <if test="adminRegistered != null" >
 		        admin_registered,
+		      </if>
+		      <if test="adminStatus != null" >
+		        admin_status,
 		      </if>
 		    </trim>
 		    <trim prefix="values (" suffix=")" suffixOverrides="," >
 		      <if test="adminName != null" >
 		        #{adminName,jdbcType=VARCHAR},
 		      </if>
-		      <if test="adminNicename != null" >
-		        #{adminNicename,jdbcType=VARCHAR},
-		      </if>
 		      <if test="adminPassword != null" >
 		        #{adminPassword,jdbcType=VARCHAR},
+		      </if>
+		      <if test="adminNicename != null" >
+		        #{adminNicename,jdbcType=VARCHAR},
 		      </if>
 		      <if test="adminEmail != null" >
 		        #{adminEmail,jdbcType=VARCHAR},
 		      </if>
-		      <if test="adminStatus != null" >
-		        #{adminStatus,jdbcType=INTEGER},
-		      </if>
 		      <if test="adminRegistered != null" >
 		        #{adminRegistered,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="adminStatus != null" >
+		        #{adminStatus,jdbcType=INTEGER},
 		      </if>
 		    </trim>
   		</insert>

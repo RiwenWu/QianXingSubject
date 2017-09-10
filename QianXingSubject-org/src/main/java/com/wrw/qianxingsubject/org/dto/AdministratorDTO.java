@@ -37,4 +37,18 @@ public class AdministratorDTO extends Administrator{
 		this.newPwd = newPwd;
 	}
 	
+	@Override
+    public String toString() {
+    	StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Id=").append(getId());
+        sb.append(", adminName=").append(getAdminName());
+        sb.append(", adminPassword=").append(getAdminPassword());
+        sb.append(", adminNicename=").append(getAdminNicename());
+        sb.append(", adminRegistered=").append(getAdminRegistered());
+        sb.append(", adminStatus=").append(getAdminStatus());
+        sb.append("]");
+        return sb.toString();
+    }
 }

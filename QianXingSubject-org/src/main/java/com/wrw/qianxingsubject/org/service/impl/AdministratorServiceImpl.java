@@ -100,7 +100,8 @@ public class AdministratorServiceImpl implements AdministratorService{
 		
 		AdminRole newar = new AdminRole();
 		try {
-			if (adminDTO.getId() == 0  ) {
+			if (adminDTO.getId() == 0) {
+				System.out.println(adminDTO.toString());
 				adminDTO.setAdminRegistered(new Date());
 				administratorDao.insert(adminDTO);
 				
